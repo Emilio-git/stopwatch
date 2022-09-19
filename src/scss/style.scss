@@ -21,10 +21,8 @@ html, body {
 }
 
 .header {
-
    &__container {
    }
-
 }
 
 .main {
@@ -65,12 +63,13 @@ html, body {
       align-items: center;      
    }
    &__wrapper{
+      position: relative;
       width: 420px;
       height: 420px;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #000;
+      background: #034C65;
       border-radius: 50%;
       overflow: hidden;
    }
@@ -82,34 +81,59 @@ html, body {
       align-items: center;
       background: #fff;
       border-radius: 50%;
+      z-index: 4;
+   }
+   &__line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 1;
+      background:#034C65;
+   }
+   &__line-first {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 2;
+      background:#FCB677;
+      transform-origin: right center;
+   }
+   &__line-second {
+      position: absolute;
+      transform-origin: right center;
+      height: 100%;
+      width: 50%;
+      left: 0;
+      top: 0;
+      background: #034C65;
+      z-index: 3;
    }
    &__item {
       font-weight: 500;
       letter-spacing: 1px;
-      color: #5a5a5a;
+      color: #034C65;
       font-size: 36px;
    }
-
    &__hours {
       display: inline-block;
       width: 40px;
    }
-
    &__minutes {
       display: inline-block;
       width: 40px;
    }
-
    &__seconds {
       display: inline-block;
       width: 40px;
    }
-
    &__milliseconds {
       display: inline-block;
       width: 40px;
    }
-
    &__devider {
       display: inline-block;
       position: relative;
@@ -120,12 +144,10 @@ html, body {
 
 
 .nav {
-
    &__inner {
       display: flex;
       justify-content: space-between;
    }
-
    &__item {
       user-select: none;
       padding: 10px;
@@ -135,6 +157,9 @@ html, body {
       min-width: 200px;
       cursor: pointer;
       transition: box-shadow 0.3s;
+      &:last-child {
+         margin-right: 0;
+      }
       &:hover {
          box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
       }
@@ -142,33 +167,25 @@ html, body {
          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
       }
    }
-
-   &__init {
-   }
-
    &__icon {
       width: 30px;
       height: 30px;
       margin-right: 15px;
    }
-
    &__start {
       display: flex;
       align-items: center;      
 
    }
-
    &__pause {
       display: flex;
       align-items: center;    
    }
-
    &__reset {
       display: flex;
       align-items: center;      
       
    }
-
    &__record {
       display: flex;
       align-items: center;      
@@ -178,12 +195,6 @@ html, body {
 
 #pause {
    display: none;
-}
-
-.main {
-
-   &__record {
-   }
 }
 
 .record {
@@ -201,23 +212,20 @@ html, body {
       flex-direction: column;
       flex-wrap: wrap;
    }
-
    &__item {
       font-weight: 500;
       flex: 0 0 35px;
       padding: 8px 20px;
       margin-bottom: 10px;
-      border-radius: 20px;
+      border-radius: 15px;
       border: 1px solid rgb(196, 196, 196);
       color: rgb(90, 90, 90);
       font-size: 16px;
    }
-
    &__number {
       display: inline-block;
       margin-right: 20px;
    }
-
    &__time {
       display: inline-block;
    }
@@ -263,22 +271,14 @@ html, body {
    background: #fff;
    border-radius: 15px;
    border: 1px solid rgb(196, 196, 196);
-   padding: 30px 20px;
+   padding: 30px;
    &__title {
       margin-bottom: 15px;
       font-size: 18px;
    }
-
-   &__list {
-   }
-
    &__item {
       margin-bottom: 10px;
    }
 }
 
-
-.footer {
-   &__container {
-   }
-}
+@import "_media.scss";

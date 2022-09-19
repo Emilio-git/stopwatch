@@ -1,0 +1,244 @@
+@media (max-width: 768px) {
+   .container {
+      max-width: 700px;
+   }
+   .timer {
+      padding: 20px 15px;
+      &__inner {
+         padding: 20px 15px;
+
+      }
+
+      &__wrapper {
+            width: 210px;
+            height: 210px;
+      }
+      &__timer {
+            width: 175px;
+            height: 175px;
+      }
+
+      &__item {
+            font-size: 18px;
+      }
+
+      &__hours {
+            width: 20px;
+      }
+
+      &__devider {
+            font-size: 18px;
+      }
+
+      &__minutes {
+            width: 20px;
+      }
+
+      &__seconds {
+            width: 20px;
+      }
+
+      &__milliseconds {
+            width: 20px;
+      }
+
+
+   }
+   .nav {
+
+
+      &__item {
+            min-width: 125px;
+      }
+
+      &__icon {
+            width: 20px;
+            height: 20px;
+      }
+
+   }
+
+   .record {
+      padding: 18px;
+      &__title {
+            font-size: 14px;
+      }
+
+      &__inner {
+            font-size: 14px;
+      }
+   }
+   .instruction {
+      padding: 18px;
+      &__title {
+            font-size: 14px;
+      }
+
+      &__item {
+            font-size: 14px;
+      }
+   }
+
+}
+
+@media (max-width: 500px) {
+      .timer {
+         padding: 15px 10px;
+         &__inner {
+            padding: 15px 10px;
+   
+         }
+   
+         &__wrapper {
+            width: 210px;
+            height: 210px;
+         }
+
+         &__timer {
+            width: 175px;
+            height: 175px;
+         }
+   
+         &__item {
+            font-size: 18px;
+         }
+   
+         &__hours {
+            width: 20px;
+         }
+   
+         &__devider {
+            font-size: 18px;
+         }
+   
+         &__minutes {
+            width: 20px;
+         }
+   
+         &__seconds {
+            width: 20px;
+         }
+   
+         &__milliseconds {
+            width: 20px;
+         }
+
+      }
+      .nav {
+   
+         &__inner {
+            display: block;
+         }
+   
+         &__item {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+            width: 100%;
+            &:last-child {
+                  margin-bottom: 0;
+            }
+         }
+         &__start {
+            display: flex;
+            justify-content: center;
+            
+         }
+         &__icon {
+            width: 20px;
+            height: 20px;
+         }
+         &__pause {
+            display: flex;
+            justify-content: center;
+         }
+   
+      }
+
+      .record {
+         padding: 15px;
+         &__title {
+            font-size: 12px;
+         }
+   
+         &__inner {
+         }
+         &__item {
+            font-size: 12px;
+            padding: 8px 15px;
+         }
+      }
+      .instruction {
+         padding: 15px;
+         &__title {
+            font-size: 12px;
+            margin-bottom: 10px;
+         }
+         &__item {
+            font-size: 10px;
+         }
+      }
+   
+}
+
+@media (max-width: 376px) {
+      .main {
+            &__record {
+               flex: 0 1 50%;
+               margin-right: 8px;
+            }
+            &__instruction {
+               flex: 0 1 50%;
+               align-self: flex-start;
+            }
+         }
+      .timer {
+         &__wrapper {
+            width: 200px;
+            height: 200px;
+         }
+
+         &__timer {
+            width: 160px;
+            height: 160px;
+         }
+   
+         &__item {
+            font-size: 16px;
+         }
+         &__devider {
+            font-size: 16px;
+         }
+   
+         }
+
+      .record {
+         padding: 10px;
+         &__title {
+            font-size: 10px;
+         }
+   
+         &__inner {
+            display: flex;            
+         }
+         &__item {
+            font-size: 10px;
+            padding: 8px 8px;
+            display: block;
+         }
+         &__number {
+            margin: 0px 2px 0px 0px;
+            
+         }
+      }
+      .instruction {
+         padding: 10px;
+         &__title {
+            font-size: 10px;
+            margin-bottom: 8px;
+         }
+         &__item {
+            font-size: 8px;
+         }
+      }
+}

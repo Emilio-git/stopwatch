@@ -76,12 +76,13 @@ html, body {
   align-items: center;
 }
 .timer__wrapper {
+  position: relative;
   width: 420px;
   height: 420px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #000;
+  background: #034C65;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -93,11 +94,41 @@ html, body {
   align-items: center;
   background: #fff;
   border-radius: 50%;
+  z-index: 4;
+}
+.timer__line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 1;
+  background: #034C65;
+}
+.timer__line-first {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+  background: #FCB677;
+  transform-origin: right center;
+}
+.timer__line-second {
+  position: absolute;
+  transform-origin: right center;
+  height: 100%;
+  width: 50%;
+  left: 0;
+  top: 0;
+  background: #034C65;
+  z-index: 3;
 }
 .timer__item {
   font-weight: 500;
   letter-spacing: 1px;
-  color: #5a5a5a;
+  color: #034C65;
   font-size: 36px;
 }
 .timer__hours {
@@ -136,6 +167,9 @@ html, body {
   min-width: 200px;
   cursor: pointer;
   transition: box-shadow 0.3s;
+}
+.nav__item:last-child {
+  margin-right: 0;
 }
 .nav__item:hover {
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
@@ -190,7 +224,7 @@ html, body {
   flex: 0 0 35px;
   padding: 8px 20px;
   margin-bottom: 10px;
-  border-radius: 20px;
+  border-radius: 15px;
   border: 1px solid rgb(196, 196, 196);
   color: rgb(90, 90, 90);
   font-size: 16px;
@@ -242,7 +276,7 @@ html, body {
   background: #fff;
   border-radius: 15px;
   border: 1px solid rgb(196, 196, 196);
-  padding: 30px 20px;
+  padding: 30px;
 }
 .instruction__title {
   margin-bottom: 15px;
@@ -250,4 +284,196 @@ html, body {
 }
 .instruction__item {
   margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 700px;
+  }
+  .timer {
+    padding: 20px 15px;
+  }
+  .timer__inner {
+    padding: 20px 15px;
+  }
+  .timer__wrapper {
+    width: 210px;
+    height: 210px;
+  }
+  .timer__timer {
+    width: 175px;
+    height: 175px;
+  }
+  .timer__item {
+    font-size: 18px;
+  }
+  .timer__hours {
+    width: 20px;
+  }
+  .timer__devider {
+    font-size: 18px;
+  }
+  .timer__minutes {
+    width: 20px;
+  }
+  .timer__seconds {
+    width: 20px;
+  }
+  .timer__milliseconds {
+    width: 20px;
+  }
+  .nav__item {
+    min-width: 125px;
+  }
+  .nav__icon {
+    width: 20px;
+    height: 20px;
+  }
+  .record {
+    padding: 18px;
+  }
+  .record__title {
+    font-size: 14px;
+  }
+  .record__inner {
+    font-size: 14px;
+  }
+  .instruction {
+    padding: 18px;
+  }
+  .instruction__title {
+    font-size: 14px;
+  }
+  .instruction__item {
+    font-size: 14px;
+  }
+}
+@media (max-width: 500px) {
+  .timer {
+    padding: 15px 10px;
+  }
+  .timer__inner {
+    padding: 15px 10px;
+  }
+  .timer__wrapper {
+    width: 210px;
+    height: 210px;
+  }
+  .timer__timer {
+    width: 175px;
+    height: 175px;
+  }
+  .timer__item {
+    font-size: 18px;
+  }
+  .timer__hours {
+    width: 20px;
+  }
+  .timer__devider {
+    font-size: 18px;
+  }
+  .timer__minutes {
+    width: 20px;
+  }
+  .timer__seconds {
+    width: 20px;
+  }
+  .timer__milliseconds {
+    width: 20px;
+  }
+  .nav__inner {
+    display: block;
+  }
+  .nav__item {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  .nav__item:last-child {
+    margin-bottom: 0;
+  }
+  .nav__start {
+    display: flex;
+    justify-content: center;
+  }
+  .nav__icon {
+    width: 20px;
+    height: 20px;
+  }
+  .nav__pause {
+    display: flex;
+    justify-content: center;
+  }
+  .record {
+    padding: 15px;
+  }
+  .record__title {
+    font-size: 12px;
+  }
+  .record__item {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+  .instruction {
+    padding: 15px;
+  }
+  .instruction__title {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .instruction__item {
+    font-size: 10px;
+  }
+}
+@media (max-width: 376px) {
+  .main__record {
+    flex: 0 1 50%;
+    margin-right: 8px;
+  }
+  .main__instruction {
+    flex: 0 1 50%;
+    align-self: flex-start;
+  }
+  .timer__wrapper {
+    width: 200px;
+    height: 200px;
+  }
+  .timer__timer {
+    width: 160px;
+    height: 160px;
+  }
+  .timer__item {
+    font-size: 16px;
+  }
+  .timer__devider {
+    font-size: 16px;
+  }
+  .record {
+    padding: 10px;
+  }
+  .record__title {
+    font-size: 10px;
+  }
+  .record__inner {
+    display: flex;
+  }
+  .record__item {
+    font-size: 10px;
+    padding: 8px 8px;
+    display: block;
+  }
+  .record__number {
+    margin: 0px 2px 0px 0px;
+  }
+  .instruction {
+    padding: 10px;
+  }
+  .instruction__title {
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
+  .instruction__item {
+    font-size: 8px;
+  }
 }

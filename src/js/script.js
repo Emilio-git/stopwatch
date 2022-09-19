@@ -16,6 +16,12 @@ window.addEventListener('DOMContentLoaded', () => {
        minutesTimer = document.querySelector('#minutes'),
        hoursTimer = document.querySelector('#hours');
 
+   // Animation
+   const lineFirst = document.querySelector('.timer__line-first'),
+         lineLayout = document.querySelector('.timer__line'),
+         lineSecond = document.querySelector('.timer__line-second');
+   let lineCounter = 0;
+
    // Variables
    let milliseconds = 0,
        seconds = 0,
@@ -87,6 +93,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
    function resetInit() {
       clearInterval(interval);
+      moveLineBack();
+
       milliseconds = 0;
       seconds = 0;
       minutes = 0;
@@ -117,6 +125,7 @@ window.addEventListener('DOMContentLoaded', () => {
    // -----------------------------------------------------------
 
    function start() {
+      startLine(seconds);
 
       // Miliseconds
       milliseconds++;
@@ -206,5 +215,40 @@ window.addEventListener('DOMContentLoaded', () => {
       btnActivation(activate, pauseBtn);
       timer.after(timerEndNode);
       switcher = 2;
+   }
+
+   // Line
+   function startLine(seconds) {
+      if (minutes % 2 == 0 || minutes < 1) {
+         lineCounter++;
+         if(seconds >= 30) {
+            lineLayout.style.cssText = `background: #FCB677`;
+            lineSecond.style.cssText = `z-index: 1;`;
+            lineFirst.style.transform = `rotate(${lineCounter * 0.06}deg)`;
+         } else {
+            lineSecond.style.cssText = `z-index: 3`;
+            lineFirst.style.cssText = `z-index: 2`;
+            lineFirst.style.transform = `rotate(${lineCounter * 0.06}deg)`;
+         }
+      } else {
+         lineCounter++;
+         if(seconds >= 30) {
+            lineLayout.style.cssText = `background: #034C65`;
+            lineFirst.style.cssText = `z-index: 1;`;
+            lineSecond.style.transform = `rotate(${lineCounter * 0.06}deg)`;
+         } else {
+            lineFirst.style.cssText = `z-index: 3`;
+            lineSecond.style.cssText = `z-index: 2`;
+            lineSecond.style.transform = `rotate(${lineCounter * 0.06}deg)`;
+         }
+      } 
+   }
+
+   function moveLineBack() {
+      lineCounter = 0;
+      lineLayout.style.cssText = `background: #034C65`;
+      lineSecond.style.cssText = `z-index: 3`;
+      lineFirst.style.cssText = `z-index: 2`;
+      lineFirst.style.transform = `rotate(${lineCounter * 0.06})`;
    }
 });
