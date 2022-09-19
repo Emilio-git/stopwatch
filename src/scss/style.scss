@@ -30,13 +30,11 @@ html, body {
 .main {
    background: #eee;
    flex: 1 1 auto;
+   padding-top: 50px;
    &__container {
    }
-}
-
-.main {
-   padding-top: 50px;
    &__timer {
+      margin-bottom: 20px;
    }
 }
 
@@ -57,10 +55,9 @@ html, body {
 
    &__item {
       display: inline-block;
-      font-size: 50px;
       font-weight: 500;
       letter-spacing: 1px;
-      color: rgb(90, 90, 90);
+      color: #5a5a5a;
       font-size: 36px;
    }
 
@@ -154,35 +151,70 @@ html, body {
    display: none;
 }
 
+.main {
+
+   &__record {
+   }
+}
+
+.record {
+   background: #fff;
+   border-radius: 15px;
+   border: 1px solid #c4c4c4;
+   padding: 30px 20px;
+   &__title {
+      font-size: 20px;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      color: #5a5a5a;
+   }
+   &__inner {
+      display: inline-flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+   
+   }
+
+   &__item {
+      font-weight: 500;
+      flex: 0 0 35px;
+      padding: 8px 20px;
+      margin-bottom: 10px;
+      border-radius: 20px;
+      border: 1px solid rgb(196, 196, 196);
+      color: rgb(90, 90, 90);
+      font-size: 20px;
+   }
+
+   &__number {
+      display: inline-block;
+      margin-right: 20px;
+   }
+
+   &__time {
+      display: inline-block;
+   }
+}
+
+.deactivate {
+   cursor: default;
+   background:rgba(90, 90, 90, 0.137);
+   &:hover {
+      box-shadow: none;
+   }
+}
+
+.timer__end {
+   display: block;
+   width: 100%;
+   height: 20px;
+   padding: 10px;
+   border-radius: 20px;
+   background: #eeee;
+   color: #000;
+}
+
 .footer {
    &__container {
    }
 }
-
-// .timer-item {
-//    display:flex;
-//    justify-content: space-between;
-// }
-
-// .timer__block {
-//    width: 150px;
-//    background:rgba(0, 0, 0, 0.637);
-//    box-shadow:0 10px 12px rgba(0,0,0,.25);
-//    font-size: 20px;
-//    font-weight:300;
-//    text-align:center;
-//    border-radius: 20px;
-//    padding: 25px;
-//    margin-right: 20px;
-//    color: #ffcd00;
-//    &:last-child {
-//       margin-right: 0;
-//    }
-// }
-
-// .timer__block span {
-//    display:block;
-//    font-size:56px;
-//    font-weight:500;
-
-// }

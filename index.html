@@ -19,21 +19,13 @@
         <section class="main__timer timer">
           <div class="timer__inner">
             <div class="timer__item">
-              <span id="hours" class="timer__hours">
-                00
-              </span>
+              <span id="hours" class="timer__hours">00</span>
               <span class="timer__devider">:</span>
-              <span id="minutes" class="timer__minutes">
-                00
-              </span>
+              <span id="minutes" class="timer__minutes">00</span>
               <span class="timer__devider">:</span>
-              <span id="seconds" class="timer__seconds">
-                00
-              </span>
+              <span id="seconds" class="timer__seconds">00</span>
               <span class="timer__devider">:</span>
-              <span id="milliseconds" class="timer__milliseconds">
-                00
-              </span>
+              <span id="milliseconds" class="timer__milliseconds">00</span>
             </div>
           </div>
           <div class="timer__nav nav">
@@ -50,13 +42,13 @@
                     <span>Пауза</span>
                   </div>
               </div>
-              <div class="nav__item" id="reset">
+              <div class="nav__item deactivate" id="reset">
                 <div class="nav__reset">
                   <img class="nav__icon" src="./icons/nav/restart.png" alt="reset">
                   <span>Сброс</span>
                 </div>
               </div>
-              <div class="nav__item" id="record">
+              <div class="nav__item deactivate" id="record">
                 <div class="nav__record">
                   <img class="nav__icon" src="./icons/nav/record.png" alt="record">
                   <span>Круг</span>
@@ -65,8 +57,11 @@
             </div>
           </div>
         </section>
-        <div class="main__record">
-        </div>
+        <section class="main__record record">
+          <h2 class="record__title">Запись времени круга</h2>
+          <div class="record__inner">
+          </div>
+        </section>
       </div>
     </main>
     <footer class="footer">

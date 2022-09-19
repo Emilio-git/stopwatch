@@ -40,10 +40,12 @@ html, body {
 .main {
   background: #eee;
   flex: 1 1 auto;
-}
-.main {
   padding-top: 50px;
 }
+.main__timer {
+  margin-bottom: 20px;
+}
+
 .timer {
   background: #fff;
   border-radius: 15px;
@@ -61,10 +63,9 @@ html, body {
 }
 .timer__item {
   display: inline-block;
-  font-size: 50px;
   font-weight: 500;
   letter-spacing: 1px;
-  color: rgb(90, 90, 90);
+  color: #5a5a5a;
   font-size: 36px;
 }
 .timer__hours {
@@ -134,4 +135,57 @@ html, body {
 
 #pause {
   display: none;
+}
+
+.record {
+  background: #fff;
+  border-radius: 15px;
+  border: 1px solid #c4c4c4;
+  padding: 30px 20px;
+}
+.record__title {
+  font-size: 20px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: #5a5a5a;
+}
+.record__inner {
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.record__item {
+  font-weight: 500;
+  flex: 0 0 35px;
+  padding: 8px 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 1px solid rgb(196, 196, 196);
+  color: rgb(90, 90, 90);
+  font-size: 20px;
+}
+.record__number {
+  display: inline-block;
+  margin-right: 20px;
+}
+.record__time {
+  display: inline-block;
+}
+
+.deactivate {
+  cursor: default;
+  background: rgba(90, 90, 90, 0.137);
+}
+.deactivate:hover {
+  box-shadow: none;
+}
+
+.timer__end {
+  display: block;
+  width: 100%;
+  height: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  background: rgba(238, 238, 238, 0.9333333333);
+  color: #000;
 }

@@ -7,7 +7,8 @@ window.addEventListener('DOMContentLoaded', () => {
    const pauseBtn = document.querySelector('#pause');
    const resetBtn = document.querySelector('#reset');
    const recordBtn = document.querySelector('#record');
-   const mainRecord = document.querySelector('.main__record');
+   const recordInner = document.querySelector('.record__inner');
+   const timer = document.querySelector('.timer');
    // Timer
    const millisecondsTimer = document.querySelector('#milliseconds'),
        secondsTimer = document.querySelector('#seconds'),
@@ -19,6 +20,8 @@ window.addEventListener('DOMContentLoaded', () => {
        seconds = 0,
        minutes = 0,
        hours = 0,
+       counter = 0,
+       activate = false,
        interval;
 
    // Listeners
@@ -27,12 +30,20 @@ window.addEventListener('DOMContentLoaded', () => {
       pauseBtn.style.display = 'block';
       clearInterval(interval);
       interval = setInterval(start, 10);
+      activate = true;
+      btnActivation(activate, recordBtn);
+      btnActivation(activate, resetBtn);
+
    });
 
    pauseBtn.addEventListener('click', () => {
-      pauseBtn.style.display = 'none';
-      startBtn.style.display = 'block';
-      clearInterval(interval);
+      if (!(pauseBtn.classList.contains('deactivate'))) {
+         pauseBtn.style.display = 'none';
+         startBtn.style.display = 'block';
+         clearInterval(interval);
+         activate = false;
+         btnActivation(activate, recordBtn);
+      }
    });
 
    recordBtn.addEventListener('click', () => {
@@ -55,6 +66,15 @@ window.addEventListener('DOMContentLoaded', () => {
       pauseBtn.style.display = 'none';
       startBtn.style.display = 'block';
 
+      const childLength = recordInner.children.length;
+      for (let i = 1; i <= childLength; i++) {
+         recordInner.children[childLength - i].remove();
+      }
+      
+      activate = false;
+      btnActivation(activate, recordBtn);
+      btnActivation(activate, resetBtn);
+      btnActivation(activate = true, pauseBtn);
    });
 
    function start() {
@@ -96,25 +116,52 @@ window.addEventListener('DOMContentLoaded', () => {
          minutes = 0;
          minutesTimer.innerText = `0${minutes}`;
       }
+
+      if (hours < 9) {
+         hoursTimer.innerHTML = `0${hours}`;
+      } else if (hours > 9 && hours < 25) {
+         hoursTimer.innerHTML = hours;
+      } 
+      
+      if (hoursTimer.innerHTML == 24) {
+         clearInterval(interval);
+         timerEnd();
+      }
    }
 
    function recordTimer() {
-      const record = document.createElement('div');
-      record.classList.add('timer__record', 'record');
-
-      record.innerHTML = `
-         <span class="record__inner">
-            ${hoursTimer.textContent}:
-            ${minutesTimer.innerHTML}:
-            ${secondsTimer.innerHTML}:
-            ${millisecondsTimer.textContent}
-         </span>
-      `;
-
-      mainRecord.append(record);
+      if (activate) {
+         if (!recordInner.children.length) {
+            counter = 0;
+         }
+         const record = document.createElement('div');
+         record.classList.add('record__item');
+         counter++;
+         record.innerHTML = `
+            <span class="record__number">Круг ${counter}:</span>
+            <span class="record__time">${hoursTimer.textContent}:${minutesTimer.innerHTML}:${secondsTimer.innerHTML}:${millisecondsTimer.textContent}</span>
+         `;
+         recordInner.prepend(record);
+      }
    }
 
+   function btnActivation(activate, btnName) {
+      if (!activate) {
+         btnName.classList.add('deactivate');
+      } else {
+         btnName.classList.remove('deactivate');
+      }
+   }
 
+   function timerEnd() {
+      const timerEndNode = document.createElement('div');
+      timerEndNode.classList.add('timer__end');
+      timerEndNode.innerHTML = `
+         <h3>Таймер завершил свою работу! Нажмите сброс для начала работы снова</h3>
+      `;
+      activate = false;
+      btnActivation(activate, recordBtn);
+      btnActivation(activate, pauseBtn);
+      timer.after(timerEndNode);
+   }
 });
-
-
