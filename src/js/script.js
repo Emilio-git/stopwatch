@@ -2,13 +2,14 @@
 
 window.addEventListener('DOMContentLoaded', () => {
    // Navigation
-   const btns = document.querySelectorAll('.nav__item');
-   const startBtn = document.querySelector('#start');
-   const pauseBtn = document.querySelector('#pause');
-   const resetBtn = document.querySelector('#reset');
-   const recordBtn = document.querySelector('#record');
-   const recordInner = document.querySelector('.record__inner');
-   const timer = document.querySelector('.timer');
+   const startBtn = document.querySelector('#start'),
+         pauseBtn = document.querySelector('#pause'),
+         resetBtn = document.querySelector('#reset'),
+         recordBtn = document.querySelector('#record'),
+         recordInner = document.querySelector('.record__inner'),
+         timer = document.querySelector('.timer'),
+         timerParent = timer.parentNode;
+
    // Timer
    const millisecondsTimer = document.querySelector('#milliseconds'),
        secondsTimer = document.querySelector('#seconds'),
@@ -21,11 +22,50 @@ window.addEventListener('DOMContentLoaded', () => {
        minutes = 0,
        hours = 0,
        counter = 0,
+       switcher = 0,
        activate = false,
        interval;
 
-   // Listeners
+   // Button listeners
    startBtn.addEventListener('click', () => {
+      switcher = 1;
+      startInit();
+   });
+
+   pauseBtn.addEventListener('click', () => {
+      switcher = 0;
+      pauseInit();
+   });
+
+   recordBtn.addEventListener('click', () => {
+      recordTimer();
+   });
+
+   resetBtn.addEventListener('click', () => {
+      resetInit();
+   });
+
+   // Keydown Listeners
+   document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+         e.preventDefault();
+         if (switcher === 0) {
+            switcher = 1;
+            startInit();
+         } else if (switcher === 1) {
+            switcher = 0;
+            pauseInit();
+         }
+      } else if (e.code === 'Enter') {
+         recordTimer();
+      } else if (e.code === 'Backspace') {
+         switcher = 0;
+         resetInit();
+      }
+   });
+
+   // Funtions --------------------------------------------------
+   function startInit() {
       startBtn.style.display = 'none';
       pauseBtn.style.display = 'block';
       clearInterval(interval);
@@ -33,10 +73,9 @@ window.addEventListener('DOMContentLoaded', () => {
       activate = true;
       btnActivation(activate, recordBtn);
       btnActivation(activate, resetBtn);
+   }
 
-   });
-
-   pauseBtn.addEventListener('click', () => {
+   function pauseInit() {
       if (!(pauseBtn.classList.contains('deactivate'))) {
          pauseBtn.style.display = 'none';
          startBtn.style.display = 'block';
@@ -44,14 +83,9 @@ window.addEventListener('DOMContentLoaded', () => {
          activate = false;
          btnActivation(activate, recordBtn);
       }
-   });
+   }
 
-   recordBtn.addEventListener('click', () => {
-      recordTimer();
-   });
-
-
-   resetBtn.addEventListener('click', () => {
+   function resetInit() {
       clearInterval(interval);
       milliseconds = 0;
       seconds = 0;
@@ -74,8 +108,13 @@ window.addEventListener('DOMContentLoaded', () => {
       activate = false;
       btnActivation(activate, recordBtn);
       btnActivation(activate, resetBtn);
-      btnActivation(activate = true, pauseBtn);
-   });
+      btnActivation(1, pauseBtn);
+
+      if (timerParent.contains(timerEndNode)) {
+         timerEndNode.remove();
+      }
+   }
+   // -----------------------------------------------------------
 
    function start() {
 
@@ -129,6 +168,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
    }
 
+   // Record new item
    function recordTimer() {
       if (activate) {
          if (!recordInner.children.length) {
@@ -145,6 +185,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
    }
 
+   // Activate buttons
    function btnActivation(activate, btnName) {
       if (!activate) {
          btnName.classList.add('deactivate');
@@ -153,15 +194,17 @@ window.addEventListener('DOMContentLoaded', () => {
       }
    }
 
+   const timerEndNode = document.createElement('div');
+   //When timer ends 
    function timerEnd() {
-      const timerEndNode = document.createElement('div');
-      timerEndNode.classList.add('timer__end');
+      timerEndNode.classList.add('main__timer-end');
       timerEndNode.innerHTML = `
-         <h3>Таймер завершил свою работу! Нажмите сброс для начала работы снова</h3>
+         <h3>Секундомер завершил свою работу. Нажмите "Сброс" для работы сначала</h3>
       `;
       activate = false;
       btnActivation(activate, recordBtn);
       btnActivation(activate, pauseBtn);
       timer.after(timerEndNode);
+      switcher = 2;
    }
 });

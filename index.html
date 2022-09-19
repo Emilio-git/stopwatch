@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="./src/style/style.css">
-   <title>Секундомер</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./icons/favicon/favicon_t.ico" type="image/x-icon">
+  <link rel="icon" href="./icons/favicon/favicon_t.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./src/style/style.css">
+  <title>Секундомер</title>
 </head>
 <body>
   <div class="wrapper">
@@ -18,14 +20,20 @@
       <div class="main__container container">
         <section class="main__timer timer">
           <div class="timer__inner">
-            <div class="timer__item">
-              <span id="hours" class="timer__hours">00</span>
-              <span class="timer__devider">:</span>
-              <span id="minutes" class="timer__minutes">00</span>
-              <span class="timer__devider">:</span>
-              <span id="seconds" class="timer__seconds">00</span>
-              <span class="timer__devider">:</span>
-              <span id="milliseconds" class="timer__milliseconds">00</span>
+            <div class="timer__line"></div>
+            <div class="timer__wrapper">
+              <div class="timer__timer">
+                <div class="timer__item">
+                  <span id="hours" class="timer__hours">00</span>
+                  <span class="timer__devider">:</span>
+                  <span id="minutes" class="timer__minutes">00</span>
+                  <span class="timer__devider">:</span>
+                  <span id="seconds" class="timer__seconds">00</span>
+                  <span class="timer__devider">:</span>
+                  <span id="milliseconds" class="timer__milliseconds">00</span>
+                </div>
+              </div>
+              
             </div>
           </div>
           <div class="timer__nav nav">
@@ -51,16 +59,36 @@
               <div class="nav__item deactivate" id="record">
                 <div class="nav__record">
                   <img class="nav__icon" src="./icons/nav/record.png" alt="record">
-                  <span>Круг</span>
+                  <span>Запись</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <section class="main__record record">
-          <h2 class="record__title">Запись времени круга</h2>
-          <div class="record__inner">
-          </div>
+        <section class="main__wrapper">
+          <section class="main__record record">
+            <h2 class="record__title">Запись промежуточного результата</h2>
+            <div class="record__inner">
+            </div>
+          </section>
+          <section class="main__instruction instruction">
+            <h3 class="instruction__title">Инструкция</h3>
+            <ul class="instruction__list">
+              <li class="instruction__item">
+                Для начала работы нажмите кнопку <strong>"Старт"</strong> или клавишу <strong>"Пробел"</strong>.
+              </li>
+              <li class="instruction__item">
+                Пауза - кнопка <strong>"Пауза"</strong> или повторное нажате клавиши <strong>"Пробел"</strong>.
+              </li>
+              <li class="instruction__item">
+                Запись промежуточного результата - кнопка <strong>"Круг"</strong> или клавиша <strong>"Enter"</strong>.
+              </li>
+              <li class="instruction__item">
+                Сброс секундомера и возвращение в начало - кнопка <strong>"Сброс"</strong> или клавиша <strong>"Backspace"</strong>.
+              </li>
+              <p class="instruction__item"><strong>Работа таймера ограничена 24 часами.</strong></p>
+            </ul>
+          </section>
         </section>
       </div>
     </main>
@@ -72,3 +100,7 @@
   <script src="/src/js/script.js"></script>
 </body>
 </html>
+
+<!-- жк открытие - от 7 млн сдача 1 кв 2024 51кв 2 кмн, 
+жк паруса - от 7.5 млн, сдан 52кв 2 кмн
+жк мчс - не новострой - от 7.5 млн, без ремонта от 50 кв, 2 кмн  -->
